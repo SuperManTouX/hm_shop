@@ -4,6 +4,7 @@ import 'package:hm_shop/components/Home/HmCategory.dart';
 import 'package:hm_shop/components/Home/HmHot.dart';
 import 'package:hm_shop/components/Home/HmMoreList.dart';
 import 'package:hm_shop/components/Home/HmSlider.dart';
+import 'package:hm_shop/types/Home.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -13,9 +14,24 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final List<CarouselItem> _bannerList = [
+    CarouselItem(
+      id: "1",
+      url: "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/1.jpg",
+    ),
+    CarouselItem(
+      id: "2",
+      url: "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/2.jpg",
+    ),
+    CarouselItem(
+      id: "3",
+      url: "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/3.jpg",
+    ),
+  ];
+
   List<Widget> getScrollChildren() {
     return [
-      SliverToBoxAdapter(child: HmSlider()),
+      SliverToBoxAdapter(child: HmSlider(bannerList: _bannerList)),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
       SliverToBoxAdapter(child: HmCategory()),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
