@@ -86,11 +86,7 @@ class _HmSliderState extends State<HmSlider> {
 
   @override
   Widget build(BuildContext context) {
+    // 后加载的层级在更上一层
     return Stack(children: [_getCarousel(), _getDots(), _getSearch()]);
-    // return Container(
-    //   height: 300,
-    //   color: Colors.blue,
-    //   child: Center(child: Text("轮播图")),
-    // );
   }
 }
