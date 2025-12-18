@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/api/home.dart';
-import 'package:hm_shop/components/Home/HMSuggestion.dart';
+import 'package:hm_shop/components/Home/HmSuggestion.dart';
 import 'package:hm_shop/components/Home/HmCategory.dart';
 import 'package:hm_shop/components/Home/HmHot.dart';
 import 'package:hm_shop/components/Home/HmMoreList.dart';
@@ -30,12 +30,17 @@ class _HomeViewState extends State<HomeView> {
     // ),
   ];
   List<CategoryItem> _categoryList = [];
-
+  SpecialOfferResult _specialOfferResult = SpecialOfferResult(
+    id: "",
+    title: "",
+    subTypes: [],
+  );
   @override
   void initState() {
     super.initState();
     _getBannerList();
     _getCategoryList();
+    _getSpecialOffer();
   }
 
   void _getBannerList() async {
@@ -49,6 +54,12 @@ class _HomeViewState extends State<HomeView> {
     setState(() {});
   }
 
+  // 特惠推荐
+  void _getSpecialOffer() async {
+    _specialOfferResult = await getSpecialOffer();
+    setState(() {});
+  }
+
   List<Widget> getScrollChildren() {
     return [
       SliverToBoxAdapter(child: HmSlider(bannerList: _bannerList)),
@@ -56,7 +67,9 @@ class _HomeViewState extends State<HomeView> {
       SliverToBoxAdapter(child: HmCategory(categoryList: _categoryList)),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
 
-      SliverToBoxAdapter(child: HmSuggestion()),
+      SliverToBoxAdapter(
+        child: HmSuggestion(specialOfferResult: _specialOfferResult),
+      ),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
 
       SliverToBoxAdapter(

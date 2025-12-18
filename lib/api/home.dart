@@ -20,3 +20,10 @@ Future<List<CategoryItem>> getCategoryList() async {
     return CategoryItem.fromJSON(item);
   }).toList();
 }
+
+// 特惠推荐
+Future<SpecialOfferResult> getSpecialOffer() async {
+  return SpecialOfferResult.fromJSON(
+    await DioRequest().get(HttpConstants.PRODUCT_LIST),
+  );
+}
