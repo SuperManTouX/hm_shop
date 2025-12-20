@@ -34,8 +34,8 @@ class DioRequest {
     );
   }
 
-  Future<dynamic> get(String url, {Map<String, dynamic>? paramas}) {
-    return HandleRespones(_dio.get(url, queryParameters: paramas));
+  Future<dynamic> get(String url, {Map<String, dynamic>? params}) {
+    return HandleRespones(_dio.get(url, queryParameters: params));
   }
 
   // 处理请求体，将真实数据结构出来

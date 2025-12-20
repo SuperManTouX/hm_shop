@@ -48,6 +48,11 @@ class _HomeViewState extends State<HomeView> {
     title: "",
     subTypes: [],
   );
+  
+// 推荐列表
+  List<GoodDetailItem> _recommendList = [];
+
+
   @override
   void initState() {
     super.initState();
@@ -56,6 +61,7 @@ class _HomeViewState extends State<HomeView> {
     _getSpecialOffer();
     _getInVogue();
     _getOneStop();
+    _getRecommendList();
   }
 
   void _getBannerList() async {
@@ -84,7 +90,11 @@ class _HomeViewState extends State<HomeView> {
     _oneStopResult = await getOneStop();
     setState(() {});
   }
-
+  // 获取推荐列表
+  void _getRecommendList() async {
+    _recommendList = await getRecommendListAPI({"limit": 10});
+    setState(() {});
+  }
   List<Widget> getScrollChildren() {
     return [
       SliverToBoxAdapter(child: HmSlider(bannerList: _bannerList)),
@@ -111,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
-      HmMoreList(),
+      HmMoreList(recommendList: _recommendList,),
     ];
   }
 
