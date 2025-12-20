@@ -34,7 +34,7 @@ class _HmHotState extends State<HmHot> {
     return _getSubTypes().map((e) {
       return Column(
         children: [
-          Image.network(e.picture, width: 120, height: 120, fit: BoxFit.cover),
+          Image.network(e.picture, width: 100, height: 120, fit: BoxFit.cover),
           Text(e.price),
         ],
       );
@@ -74,7 +74,7 @@ class _HmHotState extends State<HmHot> {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: _subTypesWidgets(),
           ),
         ],
