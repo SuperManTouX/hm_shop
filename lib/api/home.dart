@@ -27,3 +27,16 @@ Future<SpecialOfferResult> getSpecialOffer() async {
     await DioRequest().get(HttpConstants.PRODUCT_LIST),
   );
 }
+
+// 热榜推荐
+Future<SpecialOfferResult> getInVogue() async {
+  return SpecialOfferResult.fromJSON(
+    await DioRequest().get(HttpConstants.IN_VOGUE_LIST),
+  );
+}
+// 一站式推荐，数据结构和热榜推荐相同
+Future<SpecialOfferResult> getOneStop() async {
+  return SpecialOfferResult.fromJSON(
+    await DioRequest().get(HttpConstants.ONE_STOP_LIST),
+  );
+}

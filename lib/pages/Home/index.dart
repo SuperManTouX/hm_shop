@@ -31,6 +31,19 @@ class _HomeViewState extends State<HomeView> {
   ];
   List<CategoryItem> _categoryList = [];
   SpecialOfferResult _specialOfferResult = SpecialOfferResult(
+
+    id: "",
+    title: "",
+    subTypes: [],
+  );
+  // 热榜推荐数据
+  SpecialOfferResult _inVogueResult = SpecialOfferResult(
+    id: "",
+    title: "",
+    subTypes: [],
+  );
+  // 一站式推荐数据
+  SpecialOfferResult _oneStopResult = SpecialOfferResult(
     id: "",
     title: "",
     subTypes: [],
@@ -41,6 +54,8 @@ class _HomeViewState extends State<HomeView> {
     _getBannerList();
     _getCategoryList();
     _getSpecialOffer();
+    _getInVogue();
+    _getOneStop();
   }
 
   void _getBannerList() async {
@@ -57,6 +72,16 @@ class _HomeViewState extends State<HomeView> {
   // 特惠推荐
   void _getSpecialOffer() async {
     _specialOfferResult = await getSpecialOffer();
+    setState(() {});
+  }
+  // 热榜推荐
+  void _getInVogue() async {
+    _inVogueResult = await getInVogue();
+    setState(() {});
+  }
+  // 一站式推荐
+  void _getOneStop() async {
+    _oneStopResult = await getOneStop();
     setState(() {});
   }
 
@@ -78,9 +103,9 @@ class _HomeViewState extends State<HomeView> {
           child: Flex(
             direction: Axis.horizontal,
             children: [
-              Expanded(child: HmHot()),
+              Expanded(child: HmHot(HotData: _inVogueResult, cardType: 'inVogue',)),
               SizedBox(width: 10),
-              Expanded(child: HmHot()),
+              Expanded(child: HmHot(HotData: _oneStopResult, cardType: 'oneStop',)),
             ],
           ),
         ),
