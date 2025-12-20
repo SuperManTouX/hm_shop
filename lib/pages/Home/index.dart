@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   );
 
   // 推荐列表
-  List<GoodDetailItem> _recommendList = [];
+  List<GoodsDetailItem> _recommendList = [];
 
   // 滚动控制器
   final ScrollController _scrollController = ScrollController();

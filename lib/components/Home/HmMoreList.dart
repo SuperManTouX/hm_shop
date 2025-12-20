@@ -3,7 +3,7 @@ import 'package:hm_shop/types/Home.dart';
 
 class HmMoreList extends StatefulWidget {
   // 推荐列表
-  final List<GoodDetailItem> recommendList;
+  final List<GoodsDetailItem> recommendList;
 
   HmMoreList({Key? key, required this.recommendList}) : super(key: key);
 

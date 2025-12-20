@@ -1,6 +1,6 @@
 import 'package:hm_shop/constants/index.dart';
 import 'package:hm_shop/types/Home.dart';
-import 'package:hm_shop/utils/index.dart';
+import 'package:hm_shop/utils/DioRequest.dart';
 
 Future<List<CarouselItem>> getBannerList() async {
   // 要手动转换为List类型，才能使用map函数
@@ -42,14 +42,14 @@ Future<SpecialOfferResult> getOneStop() async {
 }
 
 // 推荐列表
-Future<List<GoodDetailItem>> getRecommendListAPI(
+Future<List<GoodsDetailItem>> getRecommendListAPI(
   Map<String, dynamic> params,
 ) async {
   // 返回请求
   return ((await DioRequest().get(HttpConstants.RECOMMEND_LIST, params: params))
           as List)
       .map((item) {
-        return GoodDetailItem.formJSON(item as Map<String, dynamic>);
+        return GoodsDetailItem.formJSON(item as Map<String, dynamic>);
       })
       .toList();
 }
